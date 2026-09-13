@@ -9,7 +9,6 @@ __pycache__/
 # Python packaging
 *.egg-info
 dist/
-poetry.lock
 
 # python virtualenv
 .python-version

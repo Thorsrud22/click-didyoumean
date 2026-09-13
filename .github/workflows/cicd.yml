@@ -17,12 +17,12 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-      - run: pip install -U pip poetry
-      - run: poetry install
-      - run: poetry run ruff check src/ tests/
-      - run: poetry run ruff format --diff --check src/ tests/
-      - run: poetry run mypy src/ tests/
-      - run: poetry run pytest
+      - run: pip install -U pip
+      - run: pip install -e .[dev]
+      - run: ruff check src/ tests/
+      - run: ruff format --diff --check src/ tests/
+      - run: mypy src/ tests/
+      - run: pytest
 
   cd:
     needs: [ci]
@@ -35,8 +35,10 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install -U pip poetry
+      - run: pip install -U pip build twine
+      - name: Build package
+        if: startsWith(github.event.ref, 'refs/tags')
+        run: python -m build
       - name: Publish package
         if: startsWith(github.event.ref, 'refs/tags')
-        run: |
-          poetry publish --build --username __token__ --password ${{ secrets.PYPI_TOKEN }}
+        run: twine upload --username __token__ --password ${{ secrets.PYPI_TOKEN }} dist/*

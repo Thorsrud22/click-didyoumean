@@ -1,21 +1,48 @@
-[tool.poetry]
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
 name = "click-didyoumean"
 version = "0.3.1"
 description = "Enables git-like *did-you-mean* feature in click"
-authors = ["Timo Furrer <timo.furrer@roche.com>"]
-license = "MIT"
-homepage = "https://github.com/click-contrib/click-didyoumean"
-repository = "https://github.com/click-contrib/click-didyoumean"
 readme = "README.rst"
+license = { text = "MIT" }
+authors = [{ name = "Timo Furrer", email = "timo.furrer@roche.com" }]
+requires-python = ">=3.8"
+dependencies = ["click>=7"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+]
 
-[tool.poetry.dependencies]
-python = ">=3.8"
-click = ">=7"
+[project.urls]
+Homepage = "https://github.com/click-contrib/click-didyoumean"
+Repository = "https://github.com/click-contrib/click-didyoumean"
 
-[tool.poetry.dev-dependencies]
-pytest = "^6.2.5"
-mypy = "^0.910"
-ruff = "0.3.4"
+[project.optional-dependencies]
+dev = [
+    "pytest>=7",
+    "mypy>=1.0",
+    "ruff==0.3.4",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+click_didyoumean = ["py.typed"]
 
 [tool.ruff]
 src = ["src"]
@@ -31,7 +58,3 @@ strict = true
 [tool.ruff.lint.per-file-ignores]
 "examples/**" = ["ANN", "D", "INP001"]
 "tests/**" = ["ANN", "D", "INP001", "S101"]
-
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
