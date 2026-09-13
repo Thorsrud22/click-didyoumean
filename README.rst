@@ -55,7 +55,7 @@ Use specific *did-you-mean* `group` class for your cli:
         cli()
 
 
-Or you it in a `CommandCollection`:
+Or use it in a `CommandCollection`:
 
 .. code:: python
 
@@ -119,8 +119,8 @@ Examples
     :target: https://pypi.python.org/pypi/click-didyoumean
     :alt: Latest version released on PyPi
 
-.. |build| image:: https://img.shields.io/travis/click-contrib/click-didyoumean/master.svg?style=flat
-    :target: http://travis-ci.org/click-contrib/click-didyoumean
+.. |build| image:: https://github.com/click-contrib/click-didyoumean/actions/workflows/cicd.yml/badge.svg?branch=master
+    :target: https://github.com/click-contrib/click-didyoumean/actions/workflows/cicd.yml
     :alt: Build status of the master branch
 
 .. |demo| image:: https://raw.githubusercontent.com/click-contrib/click-didyoumean/master/examples/asciicast.gif
